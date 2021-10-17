@@ -15,17 +15,17 @@ from fake_useragent import UserAgent
 LOGIN_URL = 'https://jksb.v.zzu.edu.cn/vls6sss/zzujksb.dll/login'
 SECOND_URL = 'https://jksb.v.zzu.edu.cn/vls6sss/zzujksb.dll/first0?fun2=&door='
 THIRD_URL = 'https://jksb.v.zzu.edu.cn/vls6sss/zzujksb.dll/jksb'
-username = '201924080215'
-password = '08254119'
+username = '' #学号{填写}
+password = '' #密码{填写}
 ua = UserAgent(path = "fake_useragent_0.1.11.json")
 header = {
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.102 Safari/537.36 Edg/85.0.564.51'}
 header['User-Agent'] = ua.random
 s = requests.Session()
 data = {'uid': username, 'upw': password}
-mail_user = '2248019104@qq.com'  # 发件人用户名
+mail_user = '2248019104@qq.com'  # 发件人用户名 (我的邮箱)
 mail_pass = 'grksagtpvguteagj'  # 发件人密码
-receivers = ['tang_zhengxiang@163.com']  # 收件人邮箱
+receivers = ['']  # 收件人邮箱{填写}
 
 try:
     response = s.post(LOGIN_URL, headers = header, data = data)
