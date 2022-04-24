@@ -24,7 +24,7 @@ header['User-Agent'] = ua.random
 s = requests.Session()
 data = {'uid': username, 'upw': password}
 mail_user = '2248019104@qq.com'  # 发件人用户名,不用换
-mail_pass = 'grksagtpvguteagj'  # 发件人密码,不用换
+mail_pass = 'pjrjjzghpjtbdifc'  # 发件人密码,不用换
 receivers = ['']  # 收件人邮箱 TODO:注意更换
 
 try:
