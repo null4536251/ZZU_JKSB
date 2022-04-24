@@ -1,4 +1,3 @@
-# -*- coding: UTF-8 -*-
 import os
 
 os.environ["http_proxy"] = "127.0.0.1:4973"
@@ -10,25 +9,26 @@ from email.mime.text import MIMEText
 from urllib.parse import urlencode
 
 import requests
+
 from fake_useragent import UserAgent
 
 LOGIN_URL = 'https://jksb.v.zzu.edu.cn/vls6sss/zzujksb.dll/login'
 SECOND_URL = 'https://jksb.v.zzu.edu.cn/vls6sss/zzujksb.dll/first0?fun2=&door='
 THIRD_URL = 'https://jksb.v.zzu.edu.cn/vls6sss/zzujksb.dll/jksb'
-username = '' #学号{填写}
-password = '' #密码{填写}
-ua = UserAgent(path = "fake_useragent_0.1.11.json")
+username = ''
+password = ''
+ua = UserAgent(path="fake_useragent_0.1.11.json")
 header = {
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.102 Safari/537.36 Edg/85.0.564.51'}
 header['User-Agent'] = ua.random
 s = requests.Session()
 data = {'uid': username, 'upw': password}
-mail_user = '2248019104@qq.com'  # 发件人用户名 (我的邮箱)
-mail_pass = 'grksagtpvguteagj'  # 发件人密码
-receivers = ['']  # 收件人邮箱{填写}
+mail_user = '2248019104@qq.com'  # 发件人用户名,不用换
+mail_pass = 'grksagtpvguteagj'  # 发件人密码,不用换
+receivers = ['']  # 收件人邮箱 TODO:注意更换
 
 try:
-    response = s.post(LOGIN_URL, headers = header, data = data)
+    response = s.post(LOGIN_URL, headers=header, data=data)
     response_html = str(response.content.decode('utf-8'))
     result = re.findall(r'ptopid=(.*?)&sid=(.*?)"', response_html)
     ptopid = result[0][0]
@@ -36,25 +36,25 @@ try:
     response.close()
     parameter = {'ptopid': ptopid, 'sid': sid}
     data1 = urlencode(parameter)
-    response = s.post(LOGIN_URL + "?" + data1, headers = header, data = data)
+    response = s.post(LOGIN_URL + "?" + data1, headers=header, data=data)
     response_html = str(response.content.decode('utf-8'))
     response.close()
     url = re.findall(r'parent.window.location="(.*?)"}', response_html)[0]
-    response = s.get(url, headers = header)
+    response = s.get(url, headers=header)
     response_html = str(response.content.decode('utf-8'))
     response.close()
     # print(response_html)
     url = re.findall(r'<iframe name="zzj_top_6s" id="zzj_top_6s" src="(.*?)" marginwid', response_html)[0]
-    response = s.get(url, headers = header)
+    response = s.get(url, headers=header)
     response_html = str(response.content.decode('utf-8'))
+    fun18 = re.findall(r'name="fun18" value="(.*?)"', response_html)[0]
     response.close()
     data2 = {}
-    data2['did'] = 1
-    data2['door'] = ''
-    data2['men6'] = 'a'
     data2['ptopid'] = re.findall(r'<input type="hidden" name="ptopid" value="(.*?)">', response_html)[0]
     data2['sid'] = re.findall(r'<input type="hidden" name="sid" value="(.*?)>', response_html)[0]
-    response = s.post(THIRD_URL, headers = header, data = data2)
+    data2['fun2'] = ''
+    response = s.post(THIRD_URL, headers=header, data=data2)
+    response_html = str(response.content.decode('utf-8'))
     response.close()
     data3 = {
         'myvs_1': '否',
@@ -62,12 +62,12 @@ try:
         'myvs_3': '否',
         'myvs_4': '否',
         'myvs_5': '否',
-        'myvs_6': '否',
+        # 'myvs_6': '否',
         'myvs_7': '否',
         'myvs_8': '否',
         'myvs_9': '否',
         'myvs_10': '否',
-        'myvs_11': '否',
+        # 'myvs_11': '否',
         'myvs_12': '否',
         'did': 2,
         'door': '',
@@ -76,18 +76,20 @@ try:
         'sheng6': '',
         'shi6': '',
         'fun3': '',
-        'jingdu': '113.631419',
-        'weidu': '34.753439',
+        'fun18': fun18,
+        'jingdu': '116.570146',  # 经度 TODO:注意更换
+        'weidu': '39.791691',  # 维度 TODO:注意更换
         'ptopid': data2['ptopid'],
         'sid': data2['sid'],
         'myvs_13': 'g',
-        'myvs_13a': '41',  # 省代码
-        'myvs_13b': '4101',  # 市代码
-        'myvs_13c': '河南省.郑州市.中原区',
+        'myvs_13a': '11',  # 省代码 TODO:注意更换
+        'myvs_13b': '1101',  # 市代码 TODO:注意更换
+        'myvs_13c': '北京市.通州区',  # TODO:注意更换
         'myvs_24': '否',
-        'myvs_26': 2,
+        'myvs_26': 5,
+        'memo22': '成功获取'
     }
-    response = s.post(THIRD_URL, headers = header, data = data3)
+    response = s.post(THIRD_URL, headers=header, data=data3)
     html = response.content.decode('utf-8')
     res = re.findall(r'(感谢你今日上报健康状况)', html)[0]
     print(res)
