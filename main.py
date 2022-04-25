@@ -53,6 +53,8 @@ try:
     data2['ptopid'] = re.findall(r'<input type="hidden" name="ptopid" value="(.*?)">', response_html)[0]
     data2['sid'] = re.findall(r'<input type="hidden" name="sid" value="(.*?)>', response_html)[0]
     data2['fun2'] = ''
+    data2['did'] = 1
+    data2['fun18'] = fun18
     response = s.post(THIRD_URL, headers=header, data=data2)
     response_html = str(response.content.decode('utf-8'))
     response.close()
