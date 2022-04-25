@@ -15,8 +15,8 @@ from fake_useragent import UserAgent
 LOGIN_URL = 'https://jksb.v.zzu.edu.cn/vls6sss/zzujksb.dll/login'
 SECOND_URL = 'https://jksb.v.zzu.edu.cn/vls6sss/zzujksb.dll/first0?fun2=&door='
 THIRD_URL = 'https://jksb.v.zzu.edu.cn/vls6sss/zzujksb.dll/jksb'
-username = ''
-password = ''
+username = '201924080102'
+password = 'Che165372@'
 ua = UserAgent(path="fake_useragent_0.1.11.json")
 header = {
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.102 Safari/537.36 Edg/85.0.564.51'}
@@ -25,7 +25,7 @@ s = requests.Session()
 data = {'uid': username, 'upw': password}
 mail_user = '2248019104@qq.com'  # 发件人用户名,不用换
 mail_pass = 'pjrjjzghpjtbdifc'  # 发件人密码,不用换
-receivers = ['']  # 收件人邮箱 TODO:注意更换
+receivers = ['2500464499@qq.com']  # 收件人邮箱 TODO:注意更换
 
 try:
     response = s.post(LOGIN_URL, headers=header, data=data)
@@ -79,14 +79,14 @@ try:
         'shi6': '',
         'fun3': '',
         'fun18': fun18,
-        'jingdu': '116.570146',  # 经度 TODO:注意更换
-        'weidu': '39.791691',  # 维度 TODO:注意更换
+        'jingdu': '113.53591',  # 经度 TODO:注意更换
+        'weidu': '34.817077',  # 维度 TODO:注意更换
         'ptopid': data2['ptopid'],
         'sid': data2['sid'],
         'myvs_13': 'g',
-        'myvs_13a': '11',  # 省代码 TODO:注意更换
-        'myvs_13b': '1101',  # 市代码 TODO:注意更换
-        'myvs_13c': '北京市.通州区',  # TODO:注意更换
+        'myvs_13a': '41',  # 省代码 TODO:注意更换
+        'myvs_13b': '4101',  # 市代码 TODO:注意更换
+        'myvs_13c': '郑州市.高新区',  # TODO:注意更换
         'myvs_24': '否',
         'myvs_26': 5,
         'memo22': '成功获取'
