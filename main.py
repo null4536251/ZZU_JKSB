@@ -64,13 +64,13 @@ try:
         'myvs_3': '否',
         'myvs_4': '否',
         'myvs_5': '否',
-        # 'myvs_6': '否',
         'myvs_7': '否',
         'myvs_8': '否',
-        'myvs_9': '否',
-        'myvs_10': '否',
-        # 'myvs_11': '否',
+        'myvs_9': '做了',
+        'myvs_11': '否',
         'myvs_12': '否',
+        'myvs_13': '否',
+        'myvs_15': '否',
         'did': 2,
         'door': '',
         'day6': 'b',
@@ -79,8 +79,8 @@ try:
         'shi6': '',
         'fun3': '',
         'fun18': fun18,
-        'jingdu': '113.53591',  # 经度 TODO:注意更换
-        'weidu': '34.817077',  # 维度 TODO:注意更换
+        'jingdu': '113.535663',  # 经度 TODO:注意更换
+        'weidu': '34.811384',  # 维度 TODO:注意更换
         'ptopid': data2['ptopid'],
         'sid': data2['sid'],
         'myvs_13': 'g',
@@ -89,7 +89,7 @@ try:
         'myvs_13c': '郑州市.高新区',  # TODO:注意更换
         'myvs_24': '否',
         'myvs_26': 5,
-        'memo22': '成功获取'
+        'memo22': '郑州大学主校区'
     }
     response = s.post(THIRD_URL, headers=header, data=data3)
     html = response.content.decode('utf-8')
