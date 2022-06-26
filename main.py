@@ -15,17 +15,17 @@ from fake_useragent import UserAgent
 LOGIN_URL = 'https://jksb.v.zzu.edu.cn/vls6sss/zzujksb.dll/login'
 SECOND_URL = 'https://jksb.v.zzu.edu.cn/vls6sss/zzujksb.dll/first0?fun2=&door='
 THIRD_URL = 'https://jksb.v.zzu.edu.cn/vls6sss/zzujksb.dll/jksb'
-username = ''
-password = ''
+username = os.environ["USERNAME"]
+password = os.environ["PASSWORD"]
 ua = UserAgent(path="fake_useragent_0.1.11.json")
 header = {
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.102 Safari/537.36 Edg/85.0.564.51'}
 header['User-Agent'] = ua.random
 s = requests.Session()
 data = {'uid': username, 'upw': password}
-mail_user = '2248019104@qq.com'  # 发件人用户名,不用换
-mail_pass = 'pjrjjzghpjtbdifc'  # 发件人密码,不用换
-receivers = ['']  # 收件人邮箱 TODO:注意更换
+mail_user = os.environ["MAIL_USER"]  # QQ邮箱账户
+mail_pass = os.environ["MAIL_PASS"]  # QQ邮箱授权码
+receivers = os.environ["RECEIVERS"]  # QQ邮箱账户
 
 try:
     response = s.post(LOGIN_URL, headers=header, data=data)
