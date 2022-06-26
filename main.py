@@ -16,7 +16,7 @@ LOGIN_URL = 'https://jksb.v.zzu.edu.cn/vls6sss/zzujksb.dll/login'
 JKSB_URL = 'https://jksb.v.zzu.edu.cn/vls6sss/zzujksb.dll/jksb'
 
 ua = UserAgent(path="fake_useragent_0.1.11.json")
-header = {'User-Agent': ua.random}
+headers = {'User-Agent': ua.random}
 
 username = os.environ["id"]
 password = os.environ["pwd"]
