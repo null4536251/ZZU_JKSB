@@ -41,4 +41,5 @@ jobs:
               mail_user: ${{secrets.MAIL_USER}}
               mail_pass: ${{secrets.MAIL_PWD}}
               receivers: ${{secrets.MAIL_TO}}
+              sev: ${{secrets.sev}}
           run: python main.py
