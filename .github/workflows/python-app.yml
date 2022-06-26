@@ -37,10 +37,10 @@ jobs:
             pip install bs4
         - name: 'jkdk'
           env:
-              username: ${{secrets.id}}
-              password: ${{secrets.pwd}}
+              username: ${{secrets.USERNAME}}
+              password: ${{secrets.PASSWORD}}
               mail_user: ${{secrets.MAIL_USER}}
-              mail_pass: ${{secrets.MAIL_PWD}}
-              receivers: ${{secrets.MAIL_TO}}
-              sev: ${{secrets.sev}}
+              mail_pass: ${{secrets.MAIL_PASS}}
+              receivers: ${{secrets.RECEIVERS}}
+              sev: ${{secrets.SEV}}
           run: python main.py
