@@ -4,7 +4,6 @@ import smtplib
 import traceback
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
-from urllib.parse import urlencode
 from bs4 import BeautifulSoup
 import requests
 from fake_useragent import UserAgent
@@ -18,17 +17,17 @@ JKSB_URL = 'https://jksb.v.zzu.edu.cn/vls6sss/zzujksb.dll/jksb'
 ua = UserAgent(path="fake_useragent_0.1.11.json")
 headers = {'User-Agent': ua.random}
 
-username = os.environ["id"]
-password = os.environ["pwd"]
+username = os.environ["USERNAME"]
+password = os.environ["PASSWORD"]
 data = {'uid': username, 
         'upw': password
        }
 
-sev = os.environ["sev"]
+sev = os.environ["SEV"]
 
 mail_user = os.environ["MAIL_USER"]  # QQ邮箱账户
-mail_pass = os.environ["MAIL_PWD"]  # QQ邮箱授权码
-receivers = os.environ["MAIL_TO"]  # QQ邮箱账户
+mail_pass = os.environ["MAIL_PASS"]  # QQ邮箱授权码
+receivers = os.environ["RECEIVERS"]  # QQ邮箱账户
 
 try:
     session = requests.Session()
