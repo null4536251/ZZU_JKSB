@@ -1,16 +1,16 @@
 import os
-
-os.environ["http_proxy"] = "127.0.0.1:4973"
 import re
 import smtplib
 import traceback
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from urllib.parse import urlencode
-
+from bs4 import BeautifulSoup
 import requests
-
 from fake_useragent import UserAgent
+
+
+os.environ["http_proxy"] = "127.0.0.1:4973"
 
 LOGIN_URL = 'https://jksb.v.zzu.edu.cn/vls6sss/zzujksb.dll/login'
 JKSB_URL = 'https://jksb.v.zzu.edu.cn/vls6sss/zzujksb.dll/jksb'
